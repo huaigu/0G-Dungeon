@@ -1,0 +1,105 @@
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
+import { WalletSetup } from '@/components/WalletSetup';
+
+const Landing = () => {
+  const navigate = useNavigate();
+
+  const handleWalletReady = () => {
+    navigate('/game');
+  };
+
+  return (
+    <div className="min-h-screen bg-background p-4">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-4">
+            <img 
+              src="/images/logo.jpg" 
+              alt="0G Dungeon Quest Logo" 
+              className="w-20 h-20 sm:w-20 sm:h-20 md:w-20 md:h-20 object-contain rounded-lg shadow-lg border-2 border-primary/20"
+            />
+            <h1 className="nes-text is-primary text-3xl sm:text-4xl md:text-6xl pixel-font text-center sm:text-left">
+              0G地牢
+            </h1>
+          </div>
+          <p className="nes-text text-lg mb-2">0G DUNGEON</p>
+          <p className="nes-text is-warning">复古像素风格区块链冒险游戏</p>
+        </div>
+
+        {/* Game Introduction */}
+        <div className="nes-container is-dark with-title mb-6">
+          <p className="title text-white">游戏介绍</p>
+          <div className="space-y-3">
+            <p className="nes-text">
+              欢迎来到0G地牢！这是一款结合区块链技术的复古像素风格地牢探险游戏。
+            </p>
+            <p className="nes-text">
+              在神秘的地下城中收集宝物，穿越传送门，完成10层挑战获得最终胜利！
+            </p>
+          </div>
+        </div>
+
+        {/* Game Features */}
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="nes-container is-dark with-title">
+            <p className="title text-white">游戏玩法</p>
+            <ul className="nes-text space-y-2 text-sm">
+              <li>• 使用 WASD 或方向键控制角色移动</li>
+              <li>• 收集每层地牢中的所有宝物</li>
+              <li>• 找到传送门进入下一层挑战</li>
+              <li>• 避开墙壁，规划最佳路径</li>
+              <li>• 完成全部10层获得最终胜利</li>
+            </ul>
+          </div>
+
+          <div className="nes-container is-dark with-title">
+            <p className="title text-white">区块链特色</p>
+            <ul className="nes-text space-y-2 text-sm">
+              <li>• 基于 0G 区块链技术</li>
+              <li>• 游戏进度上链记录</li>
+              <li>• 宝物收集NFT化</li>
+              <li>• 去中心化游戏体验</li>
+              <li>• 透明公平的游戏机制</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Getting Started */}
+        <div className="nes-container is-dark with-title mb-8">
+          <p className="title text-white">开始游戏</p>
+          <div className="space-y-4">
+            <div className="grid md:grid-cols-3 gap-4 text-center">
+              <div className="nes-container is-rounded">
+                <h3 className="nes-text is-primary mb-2">1. 创建钱包</h3>
+                <p className="nes-text text-xs">创建临时钱包用于游戏</p>
+              </div>
+              <div className="nes-container is-rounded">
+                <h3 className="nes-text is-success mb-2">2. 充值Gas</h3>
+                <p className="nes-text text-xs">为钱包充值用于交易费用</p>
+              </div>
+              <div className="nes-container is-rounded">
+                <h3 className="nes-text is-warning mb-2">3. 开始冒险</h3>
+                <p className="nes-text text-xs">进入地牢开始你的探险</p>
+              </div>
+            </div>
+            
+            <div className="mt-6">
+              <WalletSetup onWalletReady={handleWalletReady} />
+            </div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center">
+          <p className="nes-text text-xs opacity-75">
+            Powered by 0G Blockchain • Made with ❤️ using NES.css
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Landing;

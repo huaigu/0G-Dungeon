@@ -1,0 +1,261 @@
+/* 所有 @import 语句必须放在最前面 */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("nes.css/css/nes.min.css");
+
+/* MuzaiPixel 中文像素字体 */
+@font-face {
+  font-family: 'MuzaiPixel';
+  src: url('/fonts/MZPXflat.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MuzaiPixel Original';
+  src: url('/fonts/MZPXorig.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Monad Dungeon Design System - NES.css Enhanced Pixel Art */
+
+@layer base {
+  :root {
+    /* NES.css enhanced dungeon colors */
+    --background: 219 30% 18%;
+    --foreground: 0 0% 100%;
+
+    --card: 219 30% 22%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 219 30% 22%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 212 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 269 100% 75%;
+    --secondary-foreground: 219 30% 18%;
+
+    --muted: 219 30% 25%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 158 100% 50%;
+    --accent-foreground: 219 30% 18%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 70%;
+    --input: 219 30% 25%;
+    --ring: 212 100% 50%;
+
+    /* Enhanced Dungeon Game Colors */
+    --dungeon-wall: 0 0% 20%;
+    --dungeon-floor: 219 30% 18%;
+    --dungeon-treasure: 51 100% 50%;
+    --dungeon-portal: 269 100% 75%;
+    --dungeon-player: 158 100% 50%;
+    --dungeon-shadow: 219 30% 10%;
+    
+    /* NES Game UI */
+    --nes-success: 158 100% 50%;
+    --nes-warning: 51 100% 50%;
+    --nes-error: 0 100% 50%;
+    --nes-primary: 212 100% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "MuzaiPixel", "Press Start 2P", monospace;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+}
+
+@layer components {
+  /* NES.css enhanced dungeon styling */
+  .dungeon-container {
+    @apply nes-container is-dark with-title;
+  }
+  
+  .dungeon-grid {
+    @apply grid gap-0 p-4 bg-[hsl(var(--dungeon-shadow))];
+    grid-template-columns: repeat(10, 1fr);
+    border: 3px solid #fff;
+    image-rendering: pixelated;
+  }
+  
+  .dungeon-cell {
+    @apply relative overflow-hidden;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #495057;
+  }
+  
+  .cell-wall {
+    background: #343a40;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .cell-wall::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 6px;
+    bottom: 6px;
+    background: linear-gradient(135deg, #495057 0%, #343a40 50%, #212529 100%);
+    border-radius: 1px;
+  }
+  
+  .cell-wall::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 4px;
+    height: 4px;
+    background: #212529;
+    border-radius: 1px;
+  }
+  
+  .cell-floor {
+    background: #495057;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .cell-treasure {
+    background: linear-gradient(45deg, #ffc107, #ffeb3b);
+    border: 1px solid rgba(255, 193, 7, 0.5);
+    animation: treasure-glow 1.5s ease-in-out infinite alternate;
+  }
+  
+  .cell-portal {
+    background: linear-gradient(45deg, #6f42c1, #9c27b0);
+    border: 1px solid rgba(111, 66, 193, 0.5);
+    animation: portal-pulse 2s ease-in-out infinite;
+  }
+  
+  .cell-chest {
+    background: linear-gradient(45deg, #8B4513, #A0522D);
+    border: 1px solid rgba(139, 69, 19, 0.5);
+    animation: chest-glow 1.8s ease-in-out infinite alternate;
+  }
+  
+  .player-sprite {
+    @apply absolute inset-1 bg-[hsl(var(--nes-success))];
+    animation: player-bounce 0.8s ease-in-out infinite alternate;
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .nes-game-ui {
+    @apply nes-container is-dark;
+  }
+  
+  .nes-stat {
+    @apply text-xs;
+  }
+  
+  .nes-legend-item {
+    @apply flex items-center gap-2 text-xs;
+  }
+}
+
+@keyframes player-bounce {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-2px) scale(1.05); }
+}
+
+@keyframes treasure-glow {
+  0% { box-shadow: 0 0 5px rgba(255, 193, 7, 0.5); }
+  100% { box-shadow: 0 0 15px rgba(255, 193, 7, 0.8), 0 0 25px rgba(255, 193, 7, 0.4); }
+}
+
+@keyframes portal-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 10px rgba(111, 66, 193, 0.5);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(111, 66, 193, 0.8), 0 0 30px rgba(111, 66, 193, 0.4);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes chest-glow {
+  0% { box-shadow: 0 0 5px rgba(139, 69, 19, 0.5); }
+  100% { box-shadow: 0 0 15px rgba(139, 69, 19, 0.8), 0 0 25px rgba(160, 82, 45, 0.4); }
+}
