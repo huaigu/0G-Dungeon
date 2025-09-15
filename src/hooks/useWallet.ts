@@ -25,7 +25,7 @@ const INITIAL_STATE: WalletState = {
 };
 
 const BALANCE_REFRESH_INTERVAL = 10000; // 10秒刷新一次余额
-const MIN_BALANCE_FOR_GAME = '0.01'; // 最小游戏余额 0.01 MON
+const MIN_BALANCE_FOR_GAME = '0.01'; // 最小游戏余额 0.01 0G
 
 export function useWallet(): WalletState & WalletActions & { walletStatus: WalletStatus } {
   // 同步初始化钱包状态，避免异步导致的时序问题
@@ -218,15 +218,15 @@ export function useWallet(): WalletState & WalletActions & { walletStatus: Walle
 export function getWalletStatusText(status: WalletStatus): string {
   switch (status) {
     case 'disconnected':
-      return '未连接钱包';
+      return 'Wallet not connected';
     case 'connected':
-      return '钱包已连接';
+      return 'Wallet connected';
     case 'insufficient_balance':
-      return '余额不足';
+      return 'Insufficient balance';
     case 'ready':
-      return '准备就绪';
+      return 'Ready';
     default:
-      return '未知状态';
+      return 'Unknown status';
   }
 }
 

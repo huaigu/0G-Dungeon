@@ -97,7 +97,7 @@ export function calculateLevelDiamonds(
 ): { maxTreasureDiamonds: number; maxChestDiamonds: number; maxTotalDiamonds: number } {
   // 宝物每个固定1颗钻石
   const maxTreasureDiamonds = treasures.length;
-  // 宝箱的钻石数等于其score值
+  // The number of diamonds in a chest is equal to its score value
   const maxChestDiamonds = chests.reduce((sum, chest) => sum + chest.score, 0);
   const maxTotalDiamonds = maxTreasureDiamonds + maxChestDiamonds;
   

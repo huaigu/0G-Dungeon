@@ -52,7 +52,7 @@ const Admin = () => {
   }, [account, contractAddress, checkOwnership]);
 
   // 检查是否连接到正确的网络
-  const isCorrectNetwork = chainId === '0x40e9' || chainId === '0x40E9'; // 0G Galileo Testnet (支持大小写)
+  const isCorrectNetwork = chainId === '0x40d9' || chainId === '0x40E9'; // 0G Galileo Testnet (支持大小写)
   
   // 调试信息
   console.log('当前chainId:', chainId, '是否正确网络:', isCorrectNetwork);
@@ -75,8 +75,8 @@ const Admin = () => {
       <div className="max-w-4xl mx-auto space-y-6">
         {/* 页面标题 */}
         <div className="text-center space-y-2">
-          <h1 className="nes-text is-primary text-4xl font-bold">地牢管理面板</h1>
-          <p className="text-gray-300">上传关卡数据到0G测试网合约</p>
+          <h1 className="nes-text is-primary text-4xl font-bold">Dungeon Management Panel</h1>
+          <p className="text-gray-300">Upload level data to 0G testnet contract</p>
         </div>
 
         {/* MetaMask连接状态 */}
@@ -84,7 +84,7 @@ const Admin = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-white">
               <Wallet className="w-5 h-5" />
-              钱包连接状态
+              Wallet Connection Status
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -92,34 +92,34 @@ const Admin = () => {
               <Alert className="nes-container is-error">
                 <AlertCircle className="h-4 w-4" />
                 <AlertDescription>
-                  请先安装MetaMask钱包扩展
+                  Please install MetaMask wallet extension first
                 </AlertDescription>
               </Alert>
             ) : !isConnected ? (
               <div className="space-y-4">
-                <p className="text-gray-300">请连接你的MetaMask钱包</p>
+                <p className="text-gray-300">Please connect your MetaMask wallet</p>
                 <Button 
                   onClick={connect} 
                   disabled={metaMaskLoading}
                   className="nes-btn is-primary"
                 >
-                  {metaMaskLoading ? '连接中...' : '连接钱包'}
+                  {metaMaskLoading ? 'Connecting...' : 'Connect Wallet'}
                 </Button>
               </div>
             ) : (
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span>钱包已连接</span>
+                  <span>Wallet Connected</span>
                 </div>
                 <p className="text-sm text-gray-300 break-all">
-                  地址: {account}
+                  Address: {account}
                 </p>
                 
                 {/* 网络状态 */}
                 <div className="flex items-center gap-2">
                   <Network className="w-4 h-4" />
-                  <span>网络: </span>
+                  <span>Network: </span>
                   <Badge 
                     variant={isCorrectNetwork ? "default" : "destructive"}
                     className={isCorrectNetwork ? "nes-badge is-success" : "nes-badge is-error"}
@@ -290,8 +290,8 @@ const Admin = () => {
 
         {/* 底部说明 */}
         <div className="text-center text-sm text-gray-400 space-y-2">
-          <p>⚠️ 上传操作需要消耗gas费用，请确保钱包有足够的MON代币</p>
-          <p>🔒 只有合约所有者才能执行上传操作</p>
+          <p>⚠️ Uploading requires gas fees, please ensure your wallet has enough 0G tokens</p>
+          <p>🔒 Only the contract owner can perform the upload operation</p>
         </div>
       </div>
     </div>

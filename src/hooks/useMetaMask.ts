@@ -207,7 +207,7 @@ export function useMetaMask(): MetaMaskState & MetaMaskActions {
   useEffect(() => {
     checkMetaMaskInstalled();
     
-    // 如果已经连接，获取当前状态
+    // If already connected, get current status
     if (window.ethereum) {
       getCurrentAccount().then(account => {
         if (account) {

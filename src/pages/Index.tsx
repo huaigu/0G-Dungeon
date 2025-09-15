@@ -65,7 +65,7 @@ const Index = () => {
         walletDisplayRef.current?.silentRefresh();
       }, 1000); // 等待1秒确保交易完成
     } catch (error) {
-      console.error('移动失败:', error);
+      console.error('Move failed:', error);
     }
   };
 
@@ -84,7 +84,7 @@ const Index = () => {
             <div className="flex items-center gap-3">
               <div className="animate-spin w-6 h-6 border-2 border-blue-400 border-t-transparent rounded-full"></div>
               <span className="nes-text text-blue-400">
-                {wallet.isLoading ? '正在加载钱包...' : '正在获取余额...'}
+                {wallet.isLoading ? 'Loading wallet...' : 'Getting balance...'}
               </span>
             </div>
           </div>
@@ -102,7 +102,7 @@ const Index = () => {
         <div className="max-w-md mx-auto">
           <Alert className="nes-container is-error">
             <AlertDescription className="nes-text">
-              请先设置钱包并充值足够的 MON 代币后再开始游戏。
+              Please set up your wallet and fund it with enough 0G tokens before starting the game.
             </AlertDescription>
           </Alert>
           <div className="mt-4 text-center">
@@ -111,7 +111,7 @@ const Index = () => {
               className="nes-btn is-primary"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              返回设置钱包
+              Back to Wallet Setup
             </Button>
           </div>
         </div>
@@ -131,10 +131,10 @@ const Index = () => {
               style={{ fontSize: '14px', height: '36px' }}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              返回首页
+              Back to Home
             </Button>
             <h1 className="nes-text is-primary text-xl md:text-2xl pixel-font">
-              魔纳地牢
+              Mana Dungeon
             </h1>
           </div>
         </div>
@@ -158,25 +158,25 @@ const Index = () => {
 
             {/* Chain Mode Status */}
             <div className="nes-container is-dark with-title">
-              <p className="title text-white">游戏状态</p>
+              <p className="title text-white">Game Status</p>
               <div className="space-y-3 text-xs">
                 <div className="flex items-center gap-2">
                   <Link className="w-4 h-4 text-green-400" />
-                  <span className="nes-text">链上模式</span>
+                  <span className="nes-text">On-Chain Mode</span>
                 </div>
                 
                 <div className="text-xs text-gray-400">
-                  合约: {import.meta.env.VITE_CONTRACT_ADDRESS?.slice(0, 6)}...{import.meta.env.VITE_CONTRACT_ADDRESS?.slice(-4)}
+                  Contract: {import.meta.env.VITE_CONTRACT_ADDRESS?.slice(0, 6)}...{import.meta.env.VITE_CONTRACT_ADDRESS?.slice(-4)}
                 </div>
 
                 {/* 显示玩家状态信息 */}
                 {playerState && (
                   <div className="space-y-1">
                     <div className="text-xs text-blue-400">
-                      关卡: {playerState.level} | 步数: {playerState.steps} | 积分: {playerState.gems * 3}
+                      Level: {playerState.level} | Steps: {playerState.steps} | Score: {playerState.gems * 3}
                     </div>
                     <div className="text-xs text-green-400">
-                      位置: ({playerState.x}, {playerState.y})
+                      Position: ({playerState.x}, {playerState.y})
                     </div>
                   </div>
                 )}
@@ -194,20 +194,20 @@ const Index = () => {
                     className="nes-btn is-success is-small w-full"
                     style={{ fontSize: '10px', height: '28px' }}
                   >
-                    开始游戏
+                    Start Game
                   </Button>
                 )}
 
                 {playerStateLoaded && gameStarted && (
                   <div className="text-xs text-green-400">
-                    ✓ 游戏已开始，可以移动了！
+                    ✓ Game started, you can move now!
                   </div>
                 )}
 
-                {/* 显示加载状态 */}
+                {/* Show loading status */}
                 {!playerStateLoaded && !gameContract.isProcessing && (
                   <div className="text-xs text-yellow-400">
-                    正在加载玩家状态...
+                    Loading player status...
                   </div>
                 )}
 
@@ -215,7 +215,7 @@ const Index = () => {
                   <div className="nes-container is-rounded bg-yellow-900 border-yellow-500">
                     <div className="flex items-center gap-2">
                       <div className="animate-spin w-3 h-3 border border-yellow-400 border-t-transparent rounded-full"></div>
-                      <span className="nes-text text-yellow-400">正在上链...</span>
+                      <span className="nes-text text-yellow-400">On-chain transaction...</span>
                     </div>
                     {gameContract.lastTxHash && (
                       <div className="mt-1">
@@ -225,7 +225,7 @@ const Index = () => {
                           rel="noopener noreferrer"
                           className="text-blue-400 hover:text-blue-300 text-xs break-all"
                         >
-                          查看交易
+                          View Transaction
                         </a>
                       </div>
                     )}
@@ -244,38 +244,38 @@ const Index = () => {
             
             {/* Legend */}
             <div className="nes-container is-dark with-title">
-              <p className="title text-white">图例</p>
+              <p className="title text-white">Legend</p>
               <div className="grid grid-cols-1 gap-2 text-xs">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 bg-green-400 border border-white rounded-sm"></div>
-                  <span className="nes-text">玩家</span>
+                  <span className="nes-text">Player</span>
                   <div className="w-4 h-4 bg-gradient-to-br from-yellow-300 to-yellow-500 border border-yellow-400 rounded-sm flex items-center justify-center">
                     <span className="text-xs">◆</span>
                   </div>
-                  <span className="nes-text">宝物</span>
+                  <span className="nes-text">Treasure</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 bg-gradient-to-br from-purple-400 to-purple-600 border border-purple-400 rounded-sm flex items-center justify-center">
                     <span className="text-xs text-white">⌂</span>
                   </div>
-                  <span className="nes-text">传送门</span>
+                  <span className="nes-text">Portal</span>
                   <div className="w-4 h-4 bg-gradient-to-br from-amber-600 to-amber-800 border border-amber-500 rounded-sm flex items-center justify-center">
                     <span className="text-xs text-white">📦</span>
                   </div>
-                  <span className="nes-text">宝箱</span>
+                  <span className="nes-text">Chest</span>
                 </div>
               </div>
             </div>
             
             {/* Instructions */}
             <div className="nes-container is-dark with-title">
-              <p className="title text-white">操作说明</p>
+              <p className="title text-white">Instructions</p>
               <div className="text-xs space-y-1">
-                <p className="nes-text">移动: WASD/方向键</p>
-                <p className="nes-text">传送: 空格键</p>
-                <p className="nes-text">目标: 完成10层获胜</p>
-                <p className="nes-text">宝石积分: 3分</p>
-                <p className="nes-text">宝箱积分: 1-5分不等</p>
+                <p className="nes-text">Move: WASD/Arrow Keys</p>
+                <p className="nes-text">Portal: Spacebar</p>
+                <p className="nes-text">Goal: Complete 10 levels to win</p>
+                <p className="nes-text">Gem Score: 3 points</p>
+                <p className="nes-text">Chest Score: 1-5 points</p>
               </div>
             </div>
           </div>

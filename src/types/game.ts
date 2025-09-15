@@ -111,7 +111,7 @@ export interface WalletActions {
   exportPrivateKey: () => string | null;
 }
 
-// MetaMask 类型声明
+// MetaMask type declaration
 declare global {
   interface Window {
     ethereum?: {
@@ -120,5 +120,8 @@ declare global {
       removeListener: (event: string, callback: (data: unknown) => void) => void;
       isMetaMask?: boolean;
     };
+  }
+}}
+}   };
   }
 }

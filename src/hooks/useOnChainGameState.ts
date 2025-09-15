@@ -47,7 +47,7 @@ export const useOnChainGameState = () => {
     try {
       const levelData = await getLevelData(levelNumber);
       if (!levelData) {
-        toast.error(`无法加载第 ${levelNumber} 关数据`);
+        toast.error(`Unable to load level ${levelNumber} data`);
         return;
       }
 
@@ -253,7 +253,7 @@ export const useOnChainGameState = () => {
         
         // 宝物固定获得1颗钻石（3积分）
         newTotalDiamonds += 1;
-        toast.success(`宝物收集! +3积分 (${newTreasuresCollected}/${prev.totalTreasures})`);
+        toast.success(`Treasure collected! +3 points (${newTreasuresCollected}/${prev.totalTreasures})`);
       }
 
       // Collect chest
@@ -267,7 +267,7 @@ export const useOnChainGameState = () => {
           if (chest) {
             const diamonds = chest.score; // 使用score作为钻石数量
             newTotalDiamonds += diamonds;
-            toast.success(`宝箱开启! +${diamonds * 3}积分 (${newChestsCollected}/${prev.totalChests})`);
+            toast.success(`Chest opened! +${diamonds * 3} points (${newChestsCollected}/${prev.totalChests})`);
           }
         }
       }
@@ -275,7 +275,7 @@ export const useOnChainGameState = () => {
       // Check if on portal
       const isOnPortal = targetCell.type === 'portal';
       if (isOnPortal && !prev.isOnPortal) {
-        toast.info("按空格键进入传送门");
+        toast.info("Press Space to enter portal");
       }
 
       return {
@@ -300,7 +300,7 @@ export const useOnChainGameState = () => {
     // 本地验证移动是否有效，如果无效则不发送交易
     if (!isValidMove(direction)) {
       console.log('移动无效，不发送交易:', direction);
-      toast.warning('无法移动到该位置');
+      toast.warning('Cannot move to that position');
       return;
     }
 
@@ -346,7 +346,7 @@ export const useOnChainGameState = () => {
         }
       }, 500); // 给链上处理一些时间
       
-      toast.success('移动成功！');
+      toast.success('Move successful!');
     } catch (error) {
       console.error('链上移动失败:', error);
       // 移动失败，不更新本地状态
@@ -359,21 +359,21 @@ export const useOnChainGameState = () => {
   const startGameManually = useCallback(async () => {
     try {
       await gameContract.startGame(1);
-      toast.success('游戏开始！');
+      toast.success('Game started!');
       
       // 手动更新状态，无需重新加载
       setGameStarted(true);
       setPlayerState(prev => prev ? { ...prev, started: true, level: 1 } : null);
     } catch (error) {
       console.error('开始游戏失败:', error);
-      toast.error('开始游戏失败');
+      toast.error('Failed to start game');
     }
   }, [gameContract]);
 
   // 移动玩家（只支持链上模式）
   const movePlayer = useCallback((direction: 'up' | 'down' | 'left' | 'right') => {
     if (!gameStarted) {
-      toast.warning('请先开始游戏！');
+      toast.warning('Please start the game first!');
       return Promise.resolve();
     }
     return movePlayerOnChain(direction);
@@ -382,13 +382,13 @@ export const useOnChainGameState = () => {
   // 激活传送门
   const activatePortal = useCallback(async () => {
     if (!gameState.isOnPortal) {
-      toast.warning("需要站在传送门上才能使用");
+      toast.warning("Need to stand on the portal to use it");
       return;
     }
 
     if (gameState.currentLevel >= MAX_LEVELS) {
       setGameState(prev => ({ ...prev, gameWon: true }));
-      toast.success("恭喜！你完成了所有关卡！");
+      toast.success("Congratulations! You completed all levels!");
       return;
     }
 
@@ -398,10 +398,10 @@ export const useOnChainGameState = () => {
     // 总是使用链上模式，需要重新开始游戏
     try {
       await gameContract.startGame(nextLevel);
-      toast.success(`进入第 ${nextLevel} 关！`);
+      toast.success(`Entering level ${nextLevel}!`);
     } catch (error) {
       console.error('开始下一关失败:', error);
-      toast.error('开始下一关失败');
+      toast.error('Failed to start next level');
     }
   }, [gameState, loadLevel, gameContract]);
 
@@ -438,6 +438,6 @@ export const useOnChainGameState = () => {
     playerState, // 链上玩家状态
     gameStarted, // 游戏是否已开始
     playerStateLoaded, // 玩家状态是否已加载
-    startGameManually, // 手动开始游戏
+    startGameManually, // Manually start game
   };
 };

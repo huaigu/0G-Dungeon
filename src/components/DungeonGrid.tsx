@@ -44,7 +44,7 @@ export const DungeonGrid = ({ grid, gameState }: DungeonGridProps) => {
       return (
         <img 
           src="/images/avatar.png" 
-          alt="玩家头像" 
+          alt="Player Avatar" 
           className="w-8 h-8 object-contain"
         />
       );
@@ -70,7 +70,7 @@ export const DungeonGrid = ({ grid, gameState }: DungeonGridProps) => {
 
   return (
     <div className="nes-container is-dark with-title">
-      <p className="title text-white">第 {gameState.currentLevel} 层</p>
+      <p className="title text-white">Level {gameState.currentLevel}</p>
       <div className="dungeon-grid">
         {grid.flat().map((cell, index) => (
           <div

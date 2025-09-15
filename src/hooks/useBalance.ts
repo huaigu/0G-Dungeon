@@ -24,7 +24,7 @@ export function useBalance() {
     try {
       const walletInfo = loadWalletFromStorage();
       if (!walletInfo) {
-        throw new Error('未找到钱包信息');
+        throw new Error('Wallet information not found');
       }
 
       // 创建provider
@@ -47,7 +47,7 @@ export function useBalance() {
       setState(prev => ({
         ...prev,
         isLoading: showLoading ? false : prev.isLoading,
-        error: error instanceof Error ? error.message : '获取余额失败',
+        error: error instanceof Error ? error.message : 'Failed to get balance',
       }));
     }
   }, []);
@@ -72,6 +72,6 @@ export function useBalance() {
   return {
     ...state,
     refresh: fetchBalance,
-    silentRefresh, // 静默刷新方法
+    silentRefresh, // Silent refresh method
   };
 }

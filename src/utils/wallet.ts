@@ -83,7 +83,7 @@ export function saveWalletToStorage(wallet: {
     localStorage.setItem(WALLET_STORAGE_KEYS.MNEMONIC, wallet.mnemonic);
   } catch (error) {
     console.error('保存钱包失败:', error);
-    throw new Error('保存钱包失败');
+    throw new Error('Failed to save wallet');
   }
 }
 
@@ -138,14 +138,14 @@ export async function getWalletBalance(address: string): Promise<string> {
     return ethers.formatEther(balance);
   } catch (error) {
     console.error('获取余额失败:', error);
-    throw new Error('获取余额失败');
+    throw new Error('Failed to get balance');
   }
 }
 
 /**
  * 检查是否有足够的余额开始游戏
- * @param balance 余额字符串（MON 单位）
- * @param minAmount 最小金额（默认 0.01 MON）
+ * @param balance 余额字符串（0G 单位）
+ * @param minAmount 最小金额（默认 0.01 0G）
  */
 export function hasEnoughBalance(balance: string, minAmount: string = '0.01'): boolean {
   try {
@@ -196,7 +196,7 @@ export function isValidPrivateKey(privateKey: string): boolean {
 }
 
 /**
- * 验证助记词格式
+ * Validate mnemonic format
  */
 export function isValidMnemonic(mnemonic: string): boolean {
   return bip39.validateMnemonic(mnemonic);

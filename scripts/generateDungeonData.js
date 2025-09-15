@@ -360,7 +360,7 @@ function main() {
     console.log(`🏗️  网格大小: ${GRID_SIZE}x${GRID_SIZE}`);
     
     // 显示统计信息
-    console.log('\n📈 关卡统计:');
+    console.log('📈 Level statistics:');
     dungeonData.levels.forEach(level => {
       const chestDiamonds = level.chests.map(c => c.score).join(', ');
       console.log(`   第${level.level}关: ${level.treasureCount}个宝物(${TREASURE_DIAMONDS}颗钻石), ${level.chestCount}个宝箱(${chestDiamonds}颗钻石)`);

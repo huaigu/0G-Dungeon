@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import url("nes.css/css/nes.min.css");
 
-/* MuzaiPixel 中文像素字体 */
+/* MuzaiPixel Chinese pixel font */
 @font-face {
   font-family: 'MuzaiPixel';
   src: url('/fonts/MZPXflat.ttf') format('truetype');

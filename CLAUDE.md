@@ -3,7 +3,7 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Communication Guidelines
-- 总是用中文回复用户的问题
+- Always reply to user questions in English
 
 ## Development Commands
 

@@ -40,12 +40,12 @@ export const WalletDisplay = forwardRef<WalletDisplayRef, WalletDisplayProps>(
       try {
         await navigator.clipboard.writeText(walletInfo.address);
         setCopied(true);
-        toast.success('地址已复制');
+        toast.success('Address copied');
         
         setTimeout(() => setCopied(false), 2000);
       } catch (error) {
-        console.error('复制失败:', error);
-        toast.error('复制失败');
+        console.error('Copy failed:', error);
+        toast.error('Copy failed');
       }
     };
 
@@ -58,14 +58,14 @@ export const WalletDisplay = forwardRef<WalletDisplayRef, WalletDisplayProps>(
     if (!walletInfo) {
       return (
         <div className="nes-container is-dark is-rounded">
-          <span className="nes-text text-red-400">未找到钱包</span>
+          <span className="nes-text text-red-400">Wallet not found</span>
         </div>
       );
     }
 
     return (
       <div className="nes-container is-dark with-title">
-        <p className="title text-white">钱包信息</p>
+        <p className="title text-white">Wallet Information</p>
         <div className="space-y-2 text-xs">
           {/* 地址显示和复制 */}
           <div className="flex items-center gap-2">
@@ -90,7 +90,7 @@ export const WalletDisplay = forwardRef<WalletDisplayRef, WalletDisplayProps>(
           {/* 余额显示 */}
           <div className="flex items-center justify-between">
             <span className="nes-text text-yellow-400">
-              余额: {isLoading ? '...' : `${balance} MON`}
+              Balance: {isLoading ? '...' : `${balance} 0G`}
             </span>
             <Button
               onClick={handleRefresh}
@@ -99,7 +99,7 @@ export const WalletDisplay = forwardRef<WalletDisplayRef, WalletDisplayProps>(
               className="nes-btn is-small"
               style={{ fontSize: '8px', height: '18px' }}
             >
-              {isLoading ? '刷新中' : '刷新'}
+              {isLoading ? 'Refreshing' : 'Refresh'}
             </Button>
           </div>
         </div>
@@ -107,3 +107,5 @@ export const WalletDisplay = forwardRef<WalletDisplayRef, WalletDisplayProps>(
     );
   }
 );
+
+WalletDisplay.displayName = 'WalletDisplay';

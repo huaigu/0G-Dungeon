@@ -177,7 +177,7 @@ export const useGameState = () => {
       isOnPortal: false,
     }));
     loadLevel(1);
-    toast.success("游戏重置!");
+    toast.success("Game reset!");
   }, [loadLevel]);
 
   return {
@@ -185,5 +185,11 @@ export const useGameState = () => {
     movePlayer,
     resetGame,
     activatePortal,
+  };
+};
+};
+};tal,
+  };
+};rtal,
   };
 };

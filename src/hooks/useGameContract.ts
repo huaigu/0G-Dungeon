@@ -67,13 +67,13 @@ export function useGameContract(): GameContractState & GameContractActions {
   // 获取合约实例
   const getContract = useCallback(async () => {
     if (!state.contractAddress) {
-      throw new Error('合约地址未设置');
+      throw new Error('Contract address not set');
     }
 
     // 使用 burner wallet 而不是 MetaMask
     const walletInfo = loadWalletFromStorage();
     if (!walletInfo) {
-      throw new Error('未找到 burner wallet，请先创建钱包');
+      throw new Error('Burner wallet not found, please create wallet first');
     }
 
     // 创建 provider 和 signer
@@ -132,28 +132,28 @@ export function useGameContract(): GameContractState & GameContractActions {
           error: null,
         }));
       } else {
-        throw new Error('交易失败');
+        throw new Error('Transaction failed');
       }
     } catch (error: unknown) {
       console.error('step: Move operation failed:', error);
       
-      let errorMessage = '移动操作失败';
+      let errorMessage = 'Move operation failed';
       
       if (error instanceof Error) {
         if ('code' in error) {
           const ethError = error as { code: string };
           if (ethError.code === 'ACTION_REJECTED') {
-            errorMessage = '用户取消了交易';
+            errorMessage = 'User cancelled transaction';
           } else if (ethError.code === 'INSUFFICIENT_FUNDS') {
-            errorMessage = '余额不足，无法支付gas费用';
+            errorMessage = 'Insufficient balance, cannot pay gas fees';
           }
         }
         
         if (error.message.includes('execution reverted')) {
           if (error.message.includes('invalid move')) {
-            errorMessage = '无效移动：不能移动到墙或超出边界';
+            errorMessage = 'Invalid move: cannot move to wall or out of bounds';
           } else if (error.message.includes('game not started')) {
-            errorMessage = '游戏未开始，请先开始游戏';
+            errorMessage = 'Game not started, please start the game first';
           } else {
             errorMessage = `合约执行失败: ${error.message}`;
           }
@@ -221,7 +221,7 @@ export function useGameContract(): GameContractState & GameContractActions {
           error: null,
         }));
       } else {
-        throw new Error('交易失败');
+        throw new Error('Transaction failed');
       }
     } catch (error: unknown) {
       console.error('startGame: Start game failed:', error);
@@ -232,9 +232,9 @@ export function useGameContract(): GameContractState & GameContractActions {
         if ('code' in error) {
           const ethError = error as { code: string };
           if (ethError.code === 'ACTION_REJECTED') {
-            errorMessage = '用户取消了交易';
+            errorMessage = 'User cancelled transaction';
           } else if (ethError.code === 'INSUFFICIENT_FUNDS') {
-            errorMessage = '余额不足，无法支付gas费用';
+            errorMessage = 'Insufficient balance, cannot pay gas fees';
           }
         }
         
@@ -302,7 +302,7 @@ export function useGameContract(): GameContractState & GameContractActions {
         
         // 如果是最后一次尝试，返回默认状态而不是抛出错误
         if (attempt >= maxRetries) {
-          let errorMessage = '获取玩家状态失败，使用默认状态';
+          let errorMessage = 'Failed to get player status, using default state';
           
           if (error instanceof Error) {
             // 处理特定的错误类型
@@ -342,7 +342,7 @@ export function useGameContract(): GameContractState & GameContractActions {
     }
     
     // 这行不应该被执行到，但为了类型安全
-    throw new Error('获取玩家状态失败：所有重试都已用尽');
+    throw new Error('Failed to get player state: all retries have been exhausted');
   }, [getContract]);
 
   return {

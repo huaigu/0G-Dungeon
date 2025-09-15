@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import './utils/polyfills' // 确保 polyfills 在应用启动前加载
+import './utils/polyfills' // Ensure polyfills are loaded before the app starts
 import App from './App.tsx'
 import './index.css'
 

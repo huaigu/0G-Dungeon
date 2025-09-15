@@ -164,7 +164,7 @@ export function useContract(): ContractState & ContractActions {
           } else if (error.message.includes('length mismatch')) {
             errorMessage = '关卡数据格式错误：数组长度不匹配';
           } else if (error.message.includes('tiles length')) {
-            errorMessage = '关卡数据格式错误：瓦片数组长度必须为100';
+            errorMessage = 'Level data format error: tile array length must be 100';
           } else {
             errorMessage = `合约执行失败: ${error.message}`;
           }

@@ -11,10 +11,10 @@ export const GameUI = ({ gameState, onReset }: GameUIProps) => {
     <div className="space-y-4">
       {/* Game Title */}
       <div className="nes-container is-dark with-title">
-        <p className="title text-white">魔纳地牢</p>
+        <p className="title text-white">Mona Dungeon</p>
         <div className="text-center">
           <p className="nes-text is-primary text-sm mb-2">
-            收集宝物，找到传送门！
+            Collect treasures and find the portal!
           </p>
         </div>
       </div>
@@ -24,13 +24,13 @@ export const GameUI = ({ gameState, onReset }: GameUIProps) => {
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div className="space-y-2">
             <div className="flex justify-between items-center">
-              <span className="nes-text">层数:</span>
+              <span className="nes-text">Level:</span>
               <span className="nes-text is-warning">
                 {gameState.currentLevel}/10
               </span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="nes-text">步数:</span>
+              <span className="nes-text">Steps:</span>
               <span className="nes-text is-primary">
                 {gameState.steps}
               </span>
@@ -39,13 +39,13 @@ export const GameUI = ({ gameState, onReset }: GameUIProps) => {
           
           <div className="space-y-2">
             <div className="flex justify-between items-center">
-              <span className="nes-text">宝物:</span>
+              <span className="nes-text">Treasures:</span>
               <span className="nes-text is-success">
                 {gameState.treasuresCollected}/{gameState.totalTreasures}
               </span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="nes-text">宝箱:</span>
+              <span className="nes-text">Chests:</span>
               <span className="nes-text is-warning">
                 {gameState.chestsCollected}/{gameState.totalChests}
               </span>
@@ -54,13 +54,13 @@ export const GameUI = ({ gameState, onReset }: GameUIProps) => {
           
           <div className="col-span-2 space-y-2">
             <div className="flex justify-between items-center">
-              <span className="nes-text">积分:</span>
+              <span className="nes-text">Score:</span>
               <span className="nes-text is-primary">
                 {gameState.totalDiamonds * 3}
               </span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="nes-text">状态:</span>
+              <span className="nes-text">Status:</span>
               <span className={`nes-text ${
                 gameState.gameWon 
                   ? 'is-success' 
@@ -69,10 +69,10 @@ export const GameUI = ({ gameState, onReset }: GameUIProps) => {
                     : 'is-disabled'
               }`}>
                 {gameState.gameWon 
-                  ? '胜利!' 
+                  ? 'Victory!' 
                   : gameState.isOnPortal
-                    ? '按空格进入'
-                    : '探索中'
+                    ? 'Press Space to Enter'
+                    : 'Exploring'
                 }
               </span>
             </div>
@@ -85,13 +85,13 @@ export const GameUI = ({ gameState, onReset }: GameUIProps) => {
         <div className="nes-container is-dark">
           <div className="text-center">
             <p className="nes-text is-success mb-2">
-              🎉 胜利! 🎉
+              🎉 Victory! 🎉
             </p>
             <p className="nes-text text-xs">
-              用时 {gameState.steps} 步完成!
+              Completed in {gameState.steps} steps!
             </p>
             <p className="nes-text text-xs">
-              总积分: {gameState.totalDiamonds * 3}分
+              Total Score: {gameState.totalDiamonds * 3}
             </p>
           </div>
         </div>
