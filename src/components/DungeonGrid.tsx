@@ -42,11 +42,9 @@ export const DungeonGrid = ({ grid, gameState }: DungeonGridProps) => {
   const getCellContent = (cell: Cell) => {
     if (cell.hasPlayer) {
       return (
-        <img 
-          src="/images/avatar.png" 
-          alt="Player Avatar" 
-          className="w-8 h-8 object-contain"
-        />
+        <div className="zero-g-avatar">
+          <span className="zero-g-text">0G</span>
+        </div>
       );
     }
     

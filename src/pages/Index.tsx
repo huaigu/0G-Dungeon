@@ -247,8 +247,12 @@ const Index = () => {
               <p className="title text-white">Legend</p>
               <div className="grid grid-cols-1 gap-2 text-xs">
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-green-400 border border-white rounded-sm"></div>
-                  <span className="nes-text">Player</span>
+                  <div className="w-4 h-4 flex items-center justify-center bg-gray-800 border border-white rounded-sm">
+                    <div className="zero-g-avatar-mini">
+                      <span className="zero-g-text-mini">0G</span>
+                    </div>
+                  </div>
+                  <span className="nes-text">0G Agent</span>
                   <div className="w-4 h-4 bg-gradient-to-br from-yellow-300 to-yellow-500 border border-yellow-400 rounded-sm flex items-center justify-center">
                     <span className="text-xs">◆</span>
                   </div>

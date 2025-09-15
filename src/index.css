@@ -259,3 +259,104 @@
   0% { box-shadow: 0 0 5px rgba(139, 69, 19, 0.5); }
   100% { box-shadow: 0 0 15px rgba(139, 69, 19, 0.8), 0 0 25px rgba(160, 82, 45, 0.4); }
 }
+
+/* 0G Avatar Styles */
+.zero-g-avatar {
+  @apply absolute inset-0 flex items-center justify-center;
+  animation: zero-g-float 2s ease-in-out infinite;
+}
+
+.zero-g-text {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  color: #00ff88;
+  text-shadow: 
+    0 0 5px #00ff88,
+    0 0 10px #00ff88,
+    0 0 15px #00ff88,
+    0 0 20px #00ff88,
+    2px 2px 0px #004d2a;
+  animation: zero-g-glow 1.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.8));
+}
+
+@keyframes zero-g-float {
+  0%, 100% { 
+    transform: translateY(0px) scale(1) rotate(0deg);
+  }
+  25% { 
+    transform: translateY(-2px) scale(1.05) rotate(1deg);
+  }
+  50% { 
+    transform: translateY(-1px) scale(1.1) rotate(0deg);
+  }
+  75% { 
+    transform: translateY(-3px) scale(1.05) rotate(-1deg);
+  }
+}
+
+@keyframes zero-g-glow {
+  0% { 
+    text-shadow: 
+      0 0 5px #00ff88,
+      0 0 10px #00ff88,
+      0 0 15px #00ff88,
+      0 0 20px #00ff88,
+      2px 2px 0px #004d2a;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.6));
+  }
+  100% { 
+    text-shadow: 
+      0 0 8px #00ff88,
+      0 0 16px #00ff88,
+      0 0 24px #00ff88,
+      0 0 32px #00ff88,
+      0 0 40px #00cc6a,
+      2px 2px 0px #004d2a;
+    filter: drop-shadow(0 0 12px rgba(0, 255, 136, 1));
+  }
+}
+
+/* Mini 0G Avatar for Legend */
+.zero-g-avatar-mini {
+  @apply flex items-center justify-center;
+  animation: zero-g-float-mini 3s ease-in-out infinite;
+}
+
+.zero-g-text-mini {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 8px;
+  font-weight: 900;
+  color: #00ff88;
+  text-shadow: 
+    0 0 2px #00ff88,
+    0 0 4px #00ff88,
+    1px 1px 0px #004d2a;
+  animation: zero-g-glow-mini 2s ease-in-out infinite alternate;
+}
+
+@keyframes zero-g-float-mini {
+  0%, 100% { 
+    transform: scale(1);
+  }
+  50% { 
+    transform: scale(1.1);
+  }
+}
+
+@keyframes zero-g-glow-mini {
+  0% { 
+    text-shadow: 
+      0 0 2px #00ff88,
+      0 0 4px #00ff88,
+      1px 1px 0px #004d2a;
+  }
+  100% { 
+    text-shadow: 
+      0 0 3px #00ff88,
+      0 0 6px #00ff88,
+      0 0 9px #00ff88,
+      1px 1px 0px #004d2a;
+  }
+}
