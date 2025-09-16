@@ -164,10 +164,6 @@ Use the script to regenerate the dungeon layout:
 node scripts/generateDungeonData.js
 ```
 
-### Smart Contract Deployment
-Please refer to the deployment guide in the contract repository:
-[monad-dungeon-quest-contracts](https://github.com/TheDAS-designer/monad-dungeon-quest-contracts)
-
 ## 🎮 Game Features
 
 ### On-Chain Gaming Experience

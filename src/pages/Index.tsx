@@ -134,7 +134,7 @@ const Index = () => {
               Back to Home
             </Button>
             <h1 className="nes-text is-primary text-xl md:text-2xl pixel-font">
-              Mana Dungeon
+              0G Dungeon
             </h1>
           </div>
         </div>
